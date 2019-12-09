@@ -1,0 +1,32 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AvaloniaApplication1.ViewModels;assembly=AvaloniaApplication1"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        Width="300" Height="600"
+        WindowStartupLocation="CenterScreen"
+        Name="MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication1">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <StackPanel Orientation="Vertical" Spacing="8" Margin="8">
+        <Button Command="{Binding RefreshList}" Content="Refresh" />
+
+        <ListBox Items="{Binding LeakedItems}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Spacing="8" Orientation="Horizontal">
+                        <TextBlock Text="{Binding #MainWindow.Title}" />
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+
+</Window>
